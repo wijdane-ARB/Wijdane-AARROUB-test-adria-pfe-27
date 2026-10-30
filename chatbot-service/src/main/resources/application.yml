@@ -1,0 +1,22 @@
+server:
+  port: 8090
+spring:
+  application:
+    name: chatbot-service
+  ai:
+    ollama:
+      base-url: http://localhost:11434
+      chat:
+        options:
+          model: qwen2.5:7b     # modele local avec support des tools : ollama pull qwen2.5:7b
+          temperature: 0.0
+    mcp:
+      client:
+        type: SYNC
+        request-timeout: 60s
+        sse:
+          connections:
+            account:
+              url: http://localhost:8081
+            transaction:
+              url: http://localhost:8082
