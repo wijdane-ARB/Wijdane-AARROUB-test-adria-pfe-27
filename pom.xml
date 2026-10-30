@@ -27,6 +27,7 @@
         <module>audit-service</module>
         <module>config-service</module>
         <module>discovery-service</module>
+        <module>chatbot-service</module>
         <module>gateway-service</module>
     </modules>
 
