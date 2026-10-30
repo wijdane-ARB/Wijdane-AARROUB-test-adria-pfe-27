@@ -1,4 +1,4 @@
-package com.adria.bank.account.mcp;
+package ma.enset.security.accountservice.mcp;
 
 import org.springframework.ai.tool.ToolCallbackProvider;
 import org.springframework.ai.tool.method.MethodToolCallbackProvider;

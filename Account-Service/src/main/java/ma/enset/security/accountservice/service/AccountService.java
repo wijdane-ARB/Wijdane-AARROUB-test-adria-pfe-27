@@ -1,16 +1,17 @@
-package com.adria.bank.account.service;
+package ma.enset.security.accountservice.service;
 
-import com.adria.bank.account.domain.Account;
-import com.adria.bank.account.domain.AccountStatus;
-import com.adria.bank.account.repository.AccountRepository;
+
 import lombok.RequiredArgsConstructor;
+import ma.enset.security.accountservice.domain.Account;
+import ma.enset.security.accountservice.domain.AccountStatus;
+import ma.enset.security.accountservice.repository.AccountRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
 
-/** Couche service unique, appelee par REST, GraphQL et MCP. */
+
 @Service
 @RequiredArgsConstructor
 public class AccountService {
@@ -27,7 +28,9 @@ public class AccountService {
                 .build());
     }
 
-    public List<Account> findAll() { return repository.findAll(); }
+    public List<Account> findAll() {
+        return repository.findAll();
+    }
 
     public Account findById(UUID id) {
         return repository.findById(id)
@@ -68,5 +71,7 @@ public class AccountService {
         if (amount <= 0) throw new BusinessRuleException("Le montant doit etre strictement positif");
     }
 
-    private double round(double v) { return Math.round(v * 100.0) / 100.0; }
+    private double round(double v) {
+        return Math.round(v * 100.0) / 100.0;
+    }
 }

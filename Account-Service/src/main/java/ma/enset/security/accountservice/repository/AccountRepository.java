@@ -1,6 +1,6 @@
-package com.adria.bank.account.repository;
+package ma.enset.security.accountservice.repository;
 
-import com.adria.bank.account.domain.Account;
+import ma.enset.security.accountservice.domain.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;

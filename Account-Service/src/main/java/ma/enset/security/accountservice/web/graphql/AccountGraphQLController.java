@@ -1,9 +1,9 @@
-package com.adria.bank.account.web.graphql;
+package ma.enset.security.accountservice.web.graphql;
 
-import com.adria.bank.account.domain.Account;
-import com.adria.bank.account.domain.AccountStatus;
-import com.adria.bank.account.service.AccountService;
 import lombok.RequiredArgsConstructor;
+import ma.enset.security.accountservice.domain.Account;
+import ma.enset.security.accountservice.domain.AccountStatus;
+import ma.enset.security.accountservice.service.AccountService;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;

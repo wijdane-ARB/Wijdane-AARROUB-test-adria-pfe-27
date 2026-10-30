@@ -1,9 +1,10 @@
-package com.adria.bank.account.mcp;
+package ma.enset.security.accountservice.mcp;
 
-import com.adria.bank.account.domain.Account;
-import com.adria.bank.account.domain.AccountStatus;
-import com.adria.bank.account.service.AccountService;
+
 import lombok.RequiredArgsConstructor;
+import ma.enset.security.accountservice.domain.Account;
+import ma.enset.security.accountservice.domain.AccountStatus;
+import ma.enset.security.accountservice.service.AccountService;
 import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.ai.tool.annotation.ToolParam;
 import org.springframework.stereotype.Component;
@@ -18,7 +19,9 @@ public class AccountMcpTools {
     private final AccountService service;
 
     @Tool(description = "Liste tous les comptes bancaires")
-    public List<Account> listAccounts() { return service.findAll(); }
+    public List<Account> listAccounts() {
+        return service.findAll();
+    }
 
     @Tool(description = "Retourne un compte bancaire (solde, statut, devise) a partir de son identifiant UUID")
     public Account getAccount(@ToolParam(description = "UUID du compte") String accountId) {

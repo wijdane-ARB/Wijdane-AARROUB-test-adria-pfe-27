@@ -1,4 +1,5 @@
-package com.adria.bank.account.domain;
+package ma.enset.security.accountservice.domain;
+
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -7,7 +8,11 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "accounts")
-@Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

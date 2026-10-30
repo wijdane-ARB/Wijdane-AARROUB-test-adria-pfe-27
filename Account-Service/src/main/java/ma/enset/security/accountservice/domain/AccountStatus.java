@@ -1,3 +1,3 @@
-package com.adria.bank.account.domain;
+package ma.enset.security.accountservice.domain;
 
-public enum AccountStatus { ACTIVE, BLOCKED }
+public enum AccountStatus {ACTIVE, BLOCKED}

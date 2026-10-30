@@ -1,12 +1,12 @@
-package com.adria.bank.account.web.rest;
+package ma.enset.security.accountservice.web.rest;
 
-import com.adria.bank.account.domain.Account;
-import com.adria.bank.account.domain.AccountStatus;
-import com.adria.bank.account.service.AccountService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.PositiveOrZero;
 import lombok.RequiredArgsConstructor;
+import ma.enset.security.accountservice.domain.Account;
+import ma.enset.security.accountservice.domain.AccountStatus;
+import ma.enset.security.accountservice.service.AccountService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +20,8 @@ public class AccountRestController {
 
     public record CreateAccountRequest(@NotBlank String customerReference,
                                        @NotBlank String currency,
-                                       @PositiveOrZero double balance) {}
+                                       @PositiveOrZero double balance) {
+    }
 
     private final AccountService service;
 
@@ -31,10 +32,14 @@ public class AccountRestController {
     }
 
     @GetMapping
-    public List<Account> findAll() { return service.findAll(); }
+    public List<Account> findAll() {
+        return service.findAll();
+    }
 
     @GetMapping("/{id}")
-    public Account findById(@PathVariable UUID id) { return service.findById(id); }
+    public Account findById(@PathVariable UUID id) {
+        return service.findById(id);
+    }
 
     @PatchMapping("/{id}/status")
     public Account updateStatus(@PathVariable UUID id, @RequestParam AccountStatus status) {
