@@ -1,9 +1,9 @@
 package ma.enset.security.transactionservice.client;
 
-import com.adria.bank.transaction.service.BusinessRuleException;
-import com.adria.bank.transaction.service.NotFoundException;
-import com.adria.bank.transaction.service.ServiceUnavailableException;
 import feign.FeignException;
+import ma.enset.security.transactionservice.service.BusinessRuleException;
+import ma.enset.security.transactionservice.service.NotFoundException;
+import ma.enset.security.transactionservice.service.ServiceUnavailableException;
 import org.springframework.cloud.openfeign.FallbackFactory;
 import org.springframework.stereotype.Component;
 

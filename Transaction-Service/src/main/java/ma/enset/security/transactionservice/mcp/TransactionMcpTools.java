@@ -1,8 +1,10 @@
 package ma.enset.security.transactionservice.mcp;
 
-import com.adria.bank.transaction.domain.Transaction;
-import com.adria.bank.transaction.service.TransactionService;
+
+
 import lombok.RequiredArgsConstructor;
+import ma.enset.security.transactionservice.domain.Transaction;
+import ma.enset.security.transactionservice.service.TransactionService;
 import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.ai.tool.annotation.ToolParam;
 import org.springframework.stereotype.Component;

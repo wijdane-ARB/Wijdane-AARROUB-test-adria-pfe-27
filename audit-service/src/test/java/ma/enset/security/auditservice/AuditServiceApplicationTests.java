@@ -1,10 +1,10 @@
-package ma.enset.security.wijdaneaarroubtestadriapfe27;
+package ma.enset.security.auditservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class WijdaneAarroubTestAdriaPfe27ApplicationTests {
+class AuditServiceApplicationTests {
 
     @Test
     void contextLoads() {

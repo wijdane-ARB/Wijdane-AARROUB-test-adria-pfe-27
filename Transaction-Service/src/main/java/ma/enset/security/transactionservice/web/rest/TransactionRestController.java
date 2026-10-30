@@ -1,12 +1,13 @@
 package ma.enset.security.transactionservice.web.rest;
 
-import com.adria.bank.transaction.domain.Transaction;
-import com.adria.bank.transaction.service.TransactionService;
+
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.RequiredArgsConstructor;
+import ma.enset.security.transactionservice.domain.Transaction;
+import ma.enset.security.transactionservice.service.TransactionService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,10 +21,12 @@ import java.util.UUID;
 public class TransactionRestController {
 
     public record CreateTransactionRequest(@NotNull UUID accountId, @NotNull @Positive BigDecimal amount,
-                                           @NotBlank String currency, String merchantCategory, String country) {}
+                                           @NotBlank String currency, String merchantCategory, String country) {
+    }
 
     public record TransferRequest(@NotNull UUID sourceAccountId, @NotNull UUID targetAccountId,
-                                  @NotNull @Positive BigDecimal amount, String country) {}
+                                  @NotNull @Positive BigDecimal amount, String country) {
+    }
 
     private final TransactionService service;
 
@@ -45,5 +48,7 @@ public class TransactionRestController {
     }
 
     @GetMapping("/{id}")
-    public Transaction findById(@PathVariable UUID id) { return service.findById(id); }
+    public Transaction findById(@PathVariable UUID id) {
+        return service.findById(id);
+    }
 }

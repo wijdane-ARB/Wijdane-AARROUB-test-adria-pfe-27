@@ -1,5 +1,6 @@
-package com.adria.bank.transaction.client;
+package ma.enset.security.transactionservice.client;
 
 import java.util.UUID;
 
-public record AccountDto(UUID id, String customerReference, String status, String currency, double balance) {}
+public record AccountDto(UUID id, String customerReference, String status, String currency, double balance) {
+}

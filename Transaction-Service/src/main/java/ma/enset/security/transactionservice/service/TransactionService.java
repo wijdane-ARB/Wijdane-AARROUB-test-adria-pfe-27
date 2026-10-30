@@ -1,11 +1,12 @@
 package ma.enset.security.transactionservice.service;
 
-import com.adria.bank.transaction.client.AccountClient;
-import com.adria.bank.transaction.client.AccountDto;
-import com.adria.bank.transaction.domain.Transaction;
-import com.adria.bank.transaction.messaging.TransactionCreatedEvent;
-import com.adria.bank.transaction.repository.TransactionRepository;
+
 import lombok.RequiredArgsConstructor;
+import ma.enset.security.transactionservice.client.AccountClient;
+import ma.enset.security.transactionservice.client.AccountDto;
+import ma.enset.security.transactionservice.domain.Transaction;
+import ma.enset.security.transactionservice.messaging.TransactionCreatedEvent;
+import ma.enset.security.transactionservice.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,6 @@ import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
 
-/** Couche service unique, appelee par REST, GraphQL et MCP. */
 @Service
 @RequiredArgsConstructor
 public class TransactionService {
@@ -50,12 +50,11 @@ public class TransactionService {
                 .createdAt(Instant.now())
                 .build());
 
-        accounts.debit(accountId, amount.doubleValue());               // mise a jour du solde apres enregistrement
-        events.publishEvent(TransactionCreatedEvent.from(saved));      // envoye a Kafka apres commit
+        accounts.debit(accountId, amount.doubleValue());
+        events.publishEvent(TransactionCreatedEvent.from(saved));
         return saved;
     }
 
-    /** Virement : debite le compte source (transaction TRANSFER) puis credite le compte cible. */
     @Transactional
     public Transaction transfer(UUID sourceId, UUID targetId, BigDecimal amount, String country) {
         if (sourceId.equals(targetId)) throw new BusinessRuleException("Comptes source et cible identiques");
@@ -71,8 +70,8 @@ public class TransactionService {
         try {
             accounts.credit(targetId, amount.doubleValue());
         } catch (RuntimeException e) {
-            accounts.credit(sourceId, amount.doubleValue());           // compensation du debit
-            throw e;                                                   // rollback de la transaction locale
+            accounts.credit(sourceId, amount.doubleValue());
+            throw e;
         }
         return tx;
     }
@@ -93,3 +92,4 @@ public class TransactionService {
             throw new BusinessRuleException("Le montant depasse le plafond autorise (" + maxAmount + ")");
     }
 }
+

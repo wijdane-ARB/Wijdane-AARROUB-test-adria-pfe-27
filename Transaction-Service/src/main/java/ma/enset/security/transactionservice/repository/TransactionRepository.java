@@ -1,6 +1,6 @@
 package ma.enset.security.transactionservice.repository;
 
-import com.adria.bank.transaction.domain.Transaction;
+import ma.enset.security.transactionservice.domain.Transaction;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

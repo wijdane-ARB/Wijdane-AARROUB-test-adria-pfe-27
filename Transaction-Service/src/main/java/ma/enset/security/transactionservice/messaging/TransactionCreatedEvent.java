@@ -1,6 +1,6 @@
-package com.adria.bank.transaction.messaging;
+package ma.enset.security.transactionservice.messaging;
 
-import com.adria.bank.transaction.domain.Transaction;
+import ma.enset.security.transactionservice.domain.Transaction;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -13,3 +13,4 @@ public record TransactionCreatedEvent(UUID eventId, String eventType, UUID trans
                 t.getAmount(), t.getCurrency(), t.getCreatedAt().toString());
     }
 }
+

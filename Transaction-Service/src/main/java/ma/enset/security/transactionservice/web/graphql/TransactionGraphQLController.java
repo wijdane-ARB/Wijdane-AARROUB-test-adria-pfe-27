@@ -1,8 +1,8 @@
 package ma.enset.security.transactionservice.web.graphql;
 
-import com.adria.bank.transaction.domain.Transaction;
-import com.adria.bank.transaction.service.TransactionService;
 import lombok.RequiredArgsConstructor;
+import ma.enset.security.transactionservice.domain.Transaction;
+import ma.enset.security.transactionservice.service.TransactionService;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
@@ -17,17 +17,23 @@ import java.util.UUID;
 public class TransactionGraphQLController {
 
     public record CreateTransactionInput(UUID accountId, BigDecimal amount, String currency,
-                                         String merchantCategory, String country) {}
+                                         String merchantCategory, String country) {
+    }
 
-    public record TransferInput(UUID sourceAccountId, UUID targetAccountId, BigDecimal amount, String country) {}
+    public record TransferInput(UUID sourceAccountId, UUID targetAccountId, BigDecimal amount, String country) {
+    }
 
     private final TransactionService service;
 
     @QueryMapping
-    public List<Transaction> transactions(@Argument UUID accountId) { return service.findAll(accountId); }
+    public List<Transaction> transactions(@Argument UUID accountId) {
+        return service.findAll(accountId);
+    }
 
     @QueryMapping
-    public Transaction transactionById(@Argument UUID id) { return service.findById(id); }
+    public Transaction transactionById(@Argument UUID id) {
+        return service.findById(id);
+    }
 
     @MutationMapping
     public Transaction createTransaction(@Argument CreateTransactionInput input) {

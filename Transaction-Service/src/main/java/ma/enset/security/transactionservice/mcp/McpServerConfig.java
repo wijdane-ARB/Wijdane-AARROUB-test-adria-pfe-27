@@ -13,3 +13,4 @@ public class McpServerConfig {
         return MethodToolCallbackProvider.builder().toolObjects(tools).build();
     }
 }
+
