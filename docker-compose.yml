@@ -98,8 +98,11 @@ services:
     ports: ["8083:8083"]
     depends_on:
       kafka: { condition: service_started }
+      discovery-service: { condition: service_healthy }
     environment:
       SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:29092
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://discovery-service:8761/eureka
+      EUREKA_INSTANCE_PREFERIPADDRESS: "true"
 
   gateway-service:
     <<: *java-service
@@ -132,6 +135,8 @@ services:
       SPRING_AI_OLLAMA_BASE_URL: http://host.docker.internal:11434
       SPRING_AI_MCP_CLIENT_SSE_CONNECTIONS_ACCOUNT_URL: http://account-service:8081
       SPRING_AI_MCP_CLIENT_SSE_CONNECTIONS_TRANSACTION_URL: http://transaction-service:8082
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://discovery-service:8761/eureka
+      EUREKA_INSTANCE_PREFERIPADDRESS: "true"
 
 networks:
   bank-net:

@@ -1,0 +1,8 @@
+﻿services:
+  audit-service:
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://discovery-service:8761/eureka
+      EUREKA_INSTANCE_PREFERIPADDRESS: "true"
+    depends_on:
+      discovery-service:
+        condition: service_healthy
